@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="country"
+            type="com.sahu.costats.data.cache.dao.CountryStats" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:background="?colorOnPrimary">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/pastDataTitle"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_medium"
+                android:fontFamily="@font/roboto_slab"
+                android:text="Historic Data"
+                android:paddingTop="@dimen/size_large"
+                android:textSize="@dimen/font_large_x"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_slab"
+                android:gravity="end"
+                android:textSize="@dimen/font_large"
+                app:layout_constraintEnd_toStartOf="@id/cases"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title" />
+
+            <TextView
+                android:id="@+id/cases"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_slab"
+                android:gravity="end"
+                android:text="CASES"
+                android:textSize="@dimen/font_medium"
+                app:layout_constraintEnd_toStartOf="@+id/deaths"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@id/date"
+                app:layout_constraintTop_toBottomOf="@id/title" />
+
+            <TextView
+                android:id="@+id/deaths"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_slab"
+                android:gravity="end"
+                android:text="DEATHS"
+                android:textSize="@dimen/font_medium"
+                app:layout_constraintEnd_toStartOf="@+id/recovered"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@id/cases"
+                app:layout_constraintTop_toBottomOf="@id/title" />
+
+            <TextView
+                android:id="@+id/recovered"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_slab"
+                android:gravity="end"
+                android:text="RECOVERED"
+                android:textSize="@dimen/font_medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@id/deaths"
+                app:layout_constraintTop_toBottomOf="@id/title" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/pastData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/pastDataTitle"
+            />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/provinceDataTitle"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/pastData"
+            >
+
+            <TextView
+                android:id="@+id/title1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_medium"
+                android:fontFamily="@font/roboto_slab"
+                android:text="Province Data"
+                android:paddingTop="@dimen/size_large"
+                android:textSize="@dimen/font_large_x"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/date1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_slab"
+                android:gravity="end"
+                android:textSize="@dimen/font_large"
+                app:layout_constraintEnd_toStartOf="@id/cases1"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title1" />
+
+            <TextView
+                android:id="@+id/cases1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_slab"
+                android:gravity="end"
+                android:text="CASES"
+                android:textSize="@dimen/font_medium"
+                app:layout_constraintEnd_toStartOf="@+id/deaths1"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@id/date1"
+                app:layout_constraintTop_toBottomOf="@id/title1" />
+
+            <TextView
+                android:id="@+id/deaths1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_slab"
+                android:gravity="end"
+                android:text="DEATHS"
+                android:textSize="@dimen/font_medium"
+                app:layout_constraintEnd_toStartOf="@+id/recovered1"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@id/cases1"
+                app:layout_constraintTop_toBottomOf="@id/title1" />
+
+            <TextView
+                android:id="@+id/recovered1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_slab"
+                android:gravity="end"
+                android:text="RECOVERED"
+                android:textSize="@dimen/font_medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@id/deaths1"
+                app:layout_constraintTop_toBottomOf="@id/title1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/provinceData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/provinceDataTitle"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

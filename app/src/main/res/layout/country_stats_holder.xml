@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.sahu.costats.data.cache.dao.CountryStats" />
+
+        <variable
+            name="state"
+            type="com.sahu.costats.dataholders.State" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/size_small">
+
+            <ImageView
+                android:id="@+id/flag"
+                imageUrl="@{item.flagUrl}"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:elevation="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/details"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_slab_bold"
+                android:paddingStart="@dimen/size_small"
+                android:text="@{item.country}"
+                android:textSize="@dimen/font_large"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/flag"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="ASDFGH" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/total"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                doubleLineVisibility="@{state}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/details"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <androidx.constraintlayout.helper.widget.Flow
+                    android:id="@+id/flow1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="cases, recovered, deaths"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/cases"
+                    valueCount="@{item.cases}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_slab_bold"
+                    android:gravity="end"
+                    android:textSize="@dimen/font_medium"
+                    tools:text="123" />
+
+                <TextView
+                    android:id="@+id/recovered"
+                    valueCount="@{item.recovered}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_slab_bold"
+                    android:gravity="end"
+                    android:textSize="@dimen/font_medium"
+                    tools:text="123" />
+
+                <TextView
+                    android:id="@+id/deaths"
+                    valueCount="@{item.deaths}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_slab_bold"
+                    android:gravity="end"
+                    android:textSize="@dimen/font_medium"
+                    tools:text="123" />
+
+
+                <androidx.constraintlayout.helper.widget.Flow
+                    android:id="@+id/flow2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="casesToday, recoveredToday, deathsToday"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/flow1" />
+
+                <TextView
+                    android:id="@+id/casesToday"
+                    todayCount="@{item.todayCases}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_slab"
+                    android:gravity="end"
+                    android:textSize="@dimen/font_small"
+                    tools:text="123" />
+
+                <TextView
+                    android:id="@+id/recoveredToday"
+                    todayCount="@{item.todayRecovered}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_slab"
+                    android:gravity="end"
+                    android:textSize="@dimen/font_small"
+                    tools:text="123" />
+
+                <TextView
+                    android:id="@+id/deathsToday"
+                    todayCount="@{item.todayDeaths}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_slab"
+                    android:gravity="end"
+                    android:textSize="@dimen/font_small"
+                    tools:text="123" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/forOneMillion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                singleLineVisibility="@{state}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/details"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.helper.widget.Flow
+                    android:id="@+id/flow3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="casesPerMillion, recoveredPerMillion, deathsPerMillion"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/casesPerMillion"
+                    perMillionCount="@{item.casesPerMillion}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_slab"
+                    android:gravity="end"
+                    android:textSize="@dimen/font_medium"
+                    tools:text="123" />
+
+                <TextView
+                    android:id="@+id/recoveredPerMillion"
+                    perMillionCount="@{item.recoveredPerMillion}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_slab"
+                    android:gravity="end"
+                    android:textSize="@dimen/font_medium"
+                    tools:text="123" />
+
+                <TextView
+                    android:id="@+id/deathsPerMillion"
+                    perMillionCount="@{item.deathsPerMillion}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_slab"
+                    android:gravity="end"
+                    android:textSize="@dimen/font_medium"
+                    tools:text="123" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

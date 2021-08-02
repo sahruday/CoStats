@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="size_small">12dp</dimen>
+    <dimen name="size_medium">16dp</dimen>
+    <dimen name="size_large">24dp</dimen>
+
+    <dimen name="font_small">12sp</dimen>
+    <dimen name="font_medium_x">14sp</dimen>
+    <dimen name="font_medium">16sp</dimen>
+    <dimen name="font_large">18sp</dimen>
+    <dimen name="font_large_x">20sp</dimen>
+    <dimen name="font_extra_large">29sp</dimen>
+    <dimen name="size_huge">64dp</dimen>
+    <dimen name="card_height">200dp</dimen>
+
+    <dimen name="back_image_size">42dp</dimen>
+</resources>
